@@ -1,0 +1,31 @@
+import React from 'react';
+import { View, Button } from 'react-native';
+// import { ToastExample } from '../../../custom-package/ToastExample';
+import { UrineTestStripManager } from '../../../custom-package/TestStrip';
+import ImagePicker from 'react-native-image-picker';
+
+const App = () => {
+  return (
+    <View>
+      {/* <Button
+        title="Display Toast Android"
+        onPress={() => ToastExample.show('Awesome', ToastExample.SHORT)}
+      /> */}
+      <Button
+        title="Open Camera"
+        onPress={() => {
+          ImagePicker.launchCamera('', async response => {
+            // Same code as in above section!
+            console.log(response);
+            const data = await UrineTestStripManager.findTestStrip(
+              response.path,
+            );
+            console.log(data);
+          });
+        }}
+      />
+    </View>
+  );
+};
+
+export default App;
