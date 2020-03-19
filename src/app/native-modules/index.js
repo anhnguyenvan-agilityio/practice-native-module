@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, Button, Text } from 'react-native';
 // import { ToastExample } from '../../../custom-package/ToastExample';
 import { UrineTestStripManager } from '../../../custom-package/TestStrip';
 import ImagePicker from 'react-native-image-picker';
 
 const App = () => {
+  const [result, setResult] = useState('');
   return (
     <View>
       {/* <Button
@@ -21,9 +22,11 @@ const App = () => {
               response.path,
             );
             console.log(data);
+            setResult(JSON.stringify(data));
           });
         }}
       />
+      <Text>{result}</Text>
     </View>
   );
 };
